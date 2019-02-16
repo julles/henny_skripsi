@@ -11,7 +11,7 @@ class CreateKonsumenTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('konsumen', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode')->index();
