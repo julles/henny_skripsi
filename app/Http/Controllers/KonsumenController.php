@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\konsumen;
+use App\Konsumen;
 use Illuminate\Http\Request;
 
-class konsumenController extends Controller
+class KonsumenController extends Controller
 {
     public function rules()
     {
         return [
             'nama'         => 'required|min:2|max:100',
-            'kode'         => 'required|min:2|max:50|unique:konsumen,kode,' . request()->segment(3),
+            'kode'         => 'required|min:2|max:50|unique:Konsumen,kode,' . request()->segment(3),
             'no_handphone' => 'required|min:11|max:30',
             'alamat'       => 'required',
         ];
@@ -19,17 +19,17 @@ class konsumenController extends Controller
 
     public function getIndex()
     {
-        $konsumen = konsumen::orderBy('id', 'desc')->get();
+        $Konsumen = Konsumen::orderBy('id', 'desc')->get();
 
         return view('konsumen.index', [
-            'konsumen' => $konsumen,
+            'konsumen' => $Konsumen,
         ]);
     }
 
     public function getCreate()
     {
         return view('konsumen.form', [
-            'model' => new konsumen(),
+            'model' => new Konsumen(),
         ]);
     }
 
@@ -37,14 +37,14 @@ class konsumenController extends Controller
     {
         $this->validate($request, $this->rules());
 
-        konsumen::create($request->all());
+        Konsumen::create($request->all());
 
         return redirect('konsumen/index')->with('success', 'Data telah di simpan');
     }
 
     public function getUpdate($id)
     {
-        $model = konsumen::findOrFail($id);
+        $model = Konsumen::findOrFail($id);
 
         return view('konsumen.form', [
             'model' => $model,
@@ -55,7 +55,7 @@ class konsumenController extends Controller
     {
         $this->validate($request, $this->rules());
 
-        konsumen::findOrFail($id)->update($request->all());
+        Konsumen::findOrFail($id)->update($request->all());
 
         return redirect('konsumen/index')->with('success', 'Data telah di update');
     }
@@ -64,7 +64,7 @@ class konsumenController extends Controller
     {
 
         try {
-            $model = konsumen::findOrFail($id);
+            $model = Konsumen::findOrFail($id);
 
             $model->delete();
 
