@@ -156,7 +156,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
-        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+        // Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
     ],
