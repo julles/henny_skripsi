@@ -1,5 +1,4 @@
 <?php
-
 Route::get('/', function () {
     return redirect('login');
 });
@@ -7,6 +6,7 @@ Route::get('/', function () {
 Route::group(['middleware' => "auth"], function () {
     Route::controller('satuan', 'SatuanController');
     Route::controller('barang', 'BarangController');
+    Route::controller('konsumen', 'KonsumenController');
 });
 
 Route::auth();
